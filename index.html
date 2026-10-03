@@ -366,6 +366,28 @@ section[id]{scroll-margin-top:var(--sxh-h,72px)}
 @media (max-width:899px){.sx-bk-nav{display:flex}.sx-books .sx-swipe{display:none}}
 @media (prefers-reduced-motion:reduce){.sx-bk-hint .sx-bk-tip{animation:none}.sx-bk-arrow,.sx-bk-dot::before{transition:none}}
 </style>
+<style id="sx-sidearrows">
+/* Oct 3 2026: one item per view (no peek) + prev/next arrows on the media sides, both carousels */
+#books>.sx-wrap,#testimonials>.sx-wrap{position:relative}
+.sx-bk-nav .sx-bk-arrow{position:absolute;z-index:4;top:var(--sx-ay,50%);transform:translateY(-50%);background:rgba(0,0,0,.55)}
+.sx-bk-nav .sx-bk-prev{left:var(--sx-al,0px)}
+.sx-bk-nav .sx-bk-next{left:var(--sx-ar,auto)}
+.sx-bk-nav .sx-bk-arrow:hover,.sx-bk-nav .sx-bk-arrow:focus-visible{background:#FF4848}
+.sx-bk-nav .sx-bk-arrow:disabled{background:rgba(0,0,0,.55)}
+/* books, while the rail scrolls */
+@media (max-width:899px){
+ .sx-books-rail{gap:0;margin-left:0;margin-right:0;padding:0 0 6px;scroll-padding:0}
+ .sx-book{flex:0 0 100%;max-width:none;scroll-snap-align:center;scroll-snap-stop:always;padding-inline:max(0px,calc((100% - 340px)/2))}
+}
+/* videos: phone rail */
+#testimonials .sx-vrail{gap:0;margin-left:0;margin-right:0;padding:0 0 6px;scroll-padding:0}
+#testimonials .sx-vcard{flex:0 0 100%;max-width:none;scroll-snap-align:center;padding-inline:max(0px,calc((100% - 340px)/2))}
+/* videos: desktop rail */
+@media (min-width:768px){
+ #testimonials .sx-hgrid{gap:0}
+ #testimonials .sx-hcard,#testimonials .sx-hcard:first-child{flex:0 0 100%;scroll-snap-align:center;padding-inline:max(0px,calc((100% - 860px)/2))}
+}
+</style>
 </head>
 <body class="sx">
 <header class="sxh" id="sx-header">
@@ -701,6 +723,27 @@ f.addEventListener("submit",function(e){e.preventDefault();
   if(rail.scrollLeft)rail.scrollLeft=0;upd();
  });
 }catch(err){if(window.console)console.warn("video carousel disabled",err)}})();
+</script>
+<script id="sx-sidearrows-js">
+/* Places each carousel's prev/next arrows on the left/right side of the current item's media, vertically centred. */
+(function(){try{
+ var d=document,W=window,GAP=12,AW=40,EDGE=6;
+ var navs=[].slice.call(d.querySelectorAll(".sx-bk-nav"));
+ function place(nav){if(nav.hidden||getComputedStyle(nav).display==="none")return;
+  var prev=nav.querySelector(".sx-bk-prev"),rail=prev&&d.getElementById(prev.getAttribute("aria-controls"));if(!rail)return;
+  var host=nav.offsetParent;if(!host)return;
+  var item=rail.firstElementChild;if(!item)return;var media=item.querySelector(".sx-book-cover,video")||item;
+  var ir=item.getBoundingClientRect(),mr=media.getBoundingClientRect(),rr=rail.getBoundingClientRect(),hr=host.getBoundingClientRect(),vw=d.documentElement.clientWidth;
+  var mLeft=rr.left+(mr.left-ir.left),mRight=mLeft+mr.width,mMid=rr.top+(mr.top-ir.top)+mr.height/2;
+  var l=Math.max(EDGE,Math.min(mLeft-AW-GAP,mLeft-AW/2)),r=Math.min(vw-EDGE-AW,Math.max(mRight+GAP,mRight-AW/2));
+  if(mLeft-AW-GAP>=EDGE)l=mLeft-AW-GAP; if(mRight+GAP+AW<=vw-EDGE)r=mRight+GAP;
+  nav.style.setProperty("--sx-ay",(mMid-hr.top).toFixed(1)+"px");nav.style.setProperty("--sx-al",(l-hr.left).toFixed(1)+"px");nav.style.setProperty("--sx-ar",(r-hr.left).toFixed(1)+"px")}
+ var t=false;function all(){t=false;navs.forEach(place)}function req(){if(!t){t=true;W.requestAnimationFrame(all)}}
+ W.addEventListener("resize",req,{passive:true});W.addEventListener("load",req);
+ if("ResizeObserver" in W){var ro=new ResizeObserver(req);navs.forEach(function(n){ro.observe(n);var p=n.querySelector(".sx-bk-prev"),r=p&&d.getElementById(p.getAttribute("aria-controls"));if(r)ro.observe(r)})}
+ if("MutationObserver" in W){var mo=new MutationObserver(req);navs.forEach(function(n){mo.observe(n,{attributes:true,attributeFilter:["hidden"]})})}
+ d.addEventListener("transitionend",req,true);req();
+}catch(err){if(window.console)console.warn("side arrows disabled",err)}})();
 </script>
 </body>
 </html>
