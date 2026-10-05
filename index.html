@@ -389,25 +389,27 @@ section[id]{scroll-margin-top:var(--sxh-h,72px)}
 }
 </style>
 <style id="sx-books4">
+/* Oct 5 2026 publish: 7 books -> desktop rows of 4, last row centred */
 /* Oct 5 2026: 4 books (Streaming, El Arte Vol I + Vol II, Netflix 2018) + books/courses note */
 .sx-books-head .sx-books-note{max-width:600px;margin-left:auto;margin-right:auto}
-@media (min-width:900px){.sx-books-rail{grid-template-columns:repeat(4,1fr);gap:24px}}
+@media (min-width:900px){.sx-books-rail{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 24px}.sx-books-rail .sx-book{flex:0 0 calc((100% - 72px)/4)}}
 @media (min-width:900px) and (max-width:1099px){.sx .sx-book h3{font-size:16px}}
 </style>
 </head>
 <body class="sx">
 <header class="sxh" id="sx-header">
   <div class="sxh-in">
-    <a class="sxh-logo" href="https://adan763.wixsite.com/spanisxpertspilot" aria-label="SpanishXperts home"><img src="assets/logo.svg" alt="SpanishXperts" width="369" height="69"></a>
+    <a class="sxh-logo" href="/" aria-label="SpanishXperts home"><img src="assets/logo.svg" alt="SpanishXperts" width="369" height="69"></a>
     <button class="sxh-burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="sxh-nav"><span></span></button>
     <nav class="sxh-nav" id="sxh-nav" aria-label="Main">
       <ul class="sxh-links">
-        <li><a href="https://adan763.wixsite.com/spanisxpertspilot">Home</a></li>
-        <li><a href="https://adan763.wixsite.com/spanisxpertspilot/book-online">Book Live Classes</a></li>
-        <li><a href="https://adan763.wixsite.com/spanisxpertspilot/learning-modules">Virtual Courses</a></li>
+        <li><a href="/zero/">Level Zero</a></li>
+        <li><a href="/community/">Community</a></li>
+        <li><a href="/books/">Books</a></li>
+        <li><a href="/resources/">Resources</a></li>
         <li><a href="#contacto">Contact</a></li>
       </ul>
-      <a class="sxh-cta" href="https://spanishxperts.as.me">Book a Gameplan Meeting</a>
+      <a class="sxh-cta" href="https://spanishxperts.as.me">Book a trial</a>
     </nav>
   </div>
 </header>
@@ -431,7 +433,7 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
       <p class="sx-tag">Start speaking Spanish in 4 months.</p>
       <p class="sx-p">16 weeks. 24 hours of live instruction. A structured path from zero to real conversation.</p>
       <div class="sx-btns">
-        <a class="sx-btn" href="#level-zero" data-sx-scroll>Join Level Zero</a>
+        <a class="sx-btn" href="/zero/">Join Level Zero</a>
         <div class="sx-callwrap"><a class="sx-btn sx-outline" href="#assessment" data-sx-scroll>Schedule a call*</a><p class="sx-callnote">*Assessment or trial class, whatever fits.</p></div>
       </div>
     </div>
@@ -466,6 +468,24 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
         <p>The new edition. The principles remain; the ecosystem has expanded, from streaming platforms to AI.</p>
       </li>
       <li class="sx-book">
+        <span class="sx-book-cover"><img src="assets/books/mockup_spanish_level_zero.webp?v=20261005" alt="Spanish Level Zero: Beginner · Start Here, by Adán J. Ayala, paperback" width="800" height="1066" loading="lazy" decoding="async"></span>
+        <span class="sx-book-label sx-soon">Coming soon</span>
+        <h3>Spanish Level Zero: <span>Beginner &middot; Start Here</span></h3>
+        <p>SpanishXperts Learning Series, stage 1: Foundations. Build the Foundations of Spanish.</p>
+      </li>
+      <li class="sx-book">
+        <span class="sx-book-cover"><img src="assets/books/mockup_beyond_spanish_foundations.webp?v=20261005" alt="Beyond Spanish Foundations: Tenses &amp; Commands, by Adán J. Ayala, paperback" width="800" height="1066" loading="lazy" decoding="async"></span>
+        <span class="sx-book-label sx-soon">Coming soon</span>
+        <h3>Beyond Spanish Foundations: <span>Tenses &amp; Commands</span></h3>
+        <p>SpanishXperts Learning Series, stage 2: Structures. Master Tenses, Commands, and Sentence Structures.</p>
+      </li>
+      <li class="sx-book">
+        <span class="sx-book-cover"><img src="assets/books/mockup_mastering_the_subjunctive.webp?v=20261005" alt="Mastering the Subjunctive: Advanced Spanish, by Adán J. Ayala, paperback" width="800" height="1066" loading="lazy" decoding="async"></span>
+        <span class="sx-book-label sx-soon">Coming soon</span>
+        <h3>Mastering the Subjunctive: <span>Advanced Spanish</span></h3>
+        <p>SpanishXperts Learning Series, stage 3: Perspectives. Express Perspectives, Possibilities, and Hypothetical Worlds.</p>
+      </li>
+      <li class="sx-book">
         <span class="sx-book-cover"><img src="assets/books/mockup_arte_conversacion_vol1.webp?v=20261005" alt="El Arte de la Conversación en Español, Temas que conectan, Volumen I by Adán J. Ayala, paperback" width="800" height="1066" loading="lazy" decoding="async"></span>
         <span class="sx-book-label sx-soon">Coming soon</span>
         <h3 lang="es">El Arte de la Conversación en Español: <span>Temas que conectan &middot; Volumen I</span></h3>
@@ -489,6 +509,7 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
       <p class="sx-bk-hint"><svg viewBox="0 0 26 16" aria-hidden="true" focusable="false"><path d="M1 8h24M5 4.5 1.5 8 5 11.5M21 4.5 24.5 8 21 11.5" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity=".55"/><circle class="sx-bk-tip" cx="13" cy="8" r="3.2" fill="currentColor"/></svg>Swipe to see more</p>
     </div>
     <p class="sx-swipe">Swipe for more &rarr;</p>
+    <div class="sx-btns" style="justify-content:center"><a class="sx-btn sx-outline" href="/books/">See the books</a></div>
   </div>
 </section>
 <section class="sx-sec sx-lz" id="level-zero">
@@ -505,7 +526,7 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
           <li><b>24 h</b><span>of live instruction</span></li>
           <li><b>90 min</b><span>per live class</span></li>
         </ul>
-        <div class="sx-btns"><a class="sx-btn" href="#" target="_top" data-sx-link="ENROLL_URL">Enroll now</a></div>
+        <div class="sx-btns"><a class="sx-btn" href="/zero/">Enroll now</a></div>
       </div>
     </div>
   </div>
@@ -515,7 +536,7 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
     <p class="sx-kicker">Free community</p>
     <h2 class="sx-h2">Not ready to commit?</h2>
     <p class="sx-p">Join the free community: free lessons and activities to get to know the method.</p>
-    <div class="sx-btns"><a class="sx-btn" href="#" target="_top" data-sx-link="COMMUNITY_URL">Join free</a></div>
+    <div class="sx-btns"><a class="sx-btn" href="/community/">Join free</a></div>
   </div>
 </section>
 <section class="sx-sec sx-assess" id="assessment">
@@ -579,9 +600,9 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
   <div class="sx-wrap">
     <h2 class="sx-h2">Your Spanish starts at <span class="sx-red">Zero.</span></h2>
     <div class="sx-paths">
-      <div class="sx-path sx-main"><h3>Spanish Level Zero</h3><p>16 weeks and 24 hours of live instruction, from zero to real conversation.</p><a class="sx-btn" href="#" target="_top" data-sx-link="ENROLL_URL">Enroll</a></div>
+      <div class="sx-path sx-main"><h3>Spanish Level Zero</h3><p>16 weeks and 24 hours of live instruction, from zero to real conversation.</p><a class="sx-btn" href="/zero/">Enroll</a></div>
       <div class="sx-path"><h3>Free Assessment</h3><p>Find your level and get your game plan, free.</p><a class="sx-btn sx-outline" href="#" target="_top" data-sx-link="ASSESSMENT_URL">Book your assessment</a></div>
-      <div class="sx-path"><h3>Free Community</h3><p>Free lessons and activities to get to know the method.</p><a class="sx-btn sx-outline" href="#" target="_top" data-sx-link="COMMUNITY_URL">Join free</a></div>
+      <div class="sx-path"><h3>Free Community</h3><p>Free lessons and activities to get to know the method.</p><a class="sx-btn sx-outline" href="/community/">Join free</a></div>
     </div>
   </div>
 </section>
