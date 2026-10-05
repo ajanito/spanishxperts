@@ -18,7 +18,8 @@ window.SX_CONFIG = {
     VIDEO_LISA_VERTICAL: "https://video.wixstatic.com/video/fa487c_cf9d4efc0e59481c92103ec9bae3cb8b/720p/mp4/file.mp4"   /* URL de Wix Media de lisa_herceg_vertical_logo.mp4 */,
     VIDEO_ERIN_VERTICAL: "https://video.wixstatic.com/video/fa487c_6b6a15435828456ab7bf0d5fbafefe4f/720p/mp4/file.mp4"   /* URL de Wix Media de erin_lim_vertical_logo.mp4 */,
     VIDEO_LISA_16X9:     "https://video.wixstatic.com/video/fa487c_00bb8e5eb4094c19a763ba732ab861a2/720p/mp4/file.mp4"   /* URL de Wix Media de lisa_herceg_16x9_logo.mp4 */,
-    VIDEO_ERIN_16X9:     "https://video.wixstatic.com/video/fa487c_65ab8b40d3a34971b05178c5579c52d2/720p/mp4/file.mp4"   /* URL de Wix Media de erin_lim_16x9_logo.mp4 */
+    VIDEO_ERIN_16X9:     "https://video.wixstatic.com/video/fa487c_65ab8b40d3a34971b05178c5579c52d2/720p/mp4/file.mp4"   /* URL de Wix Media de erin_lim_16x9_logo.mp4 */,
+    RECAPTCHA_SITE_KEY:  "RECAPTCHA_SITE_KEY"   /* Google reCAPTCHA v3 site key (public). Replace when Adán provides it. */
 };
 </script>
 <meta charset="utf-8">
@@ -203,30 +204,47 @@ body{color:#fff;font-family:Poppins,system-ui,-apple-system,"Segoe UI",Arial,san
 a[data-ph]{outline:2px dashed var(--sx-gold);outline-offset:4px}
 .sx-phwrap{display:flex;flex-direction:column;align-items:stretch;gap:6px;width:100%}
 .sx-ct-lead{max-width:560px}
-.sx-ct-widgets{display:grid;gap:16px;margin-top:36px}
-.sx-ct-card{display:flex;flex-direction:column;border:1px solid var(--sx-line);border-radius:14px;background:var(--sx-card);padding:24px 22px}
-.sx-ct-card h3{margin:0;font-size:20px;font-weight:700;letter-spacing:-.01em}
-.sx-ct-card > p:not(.sx-ct-ico){margin:8px 0 0;font-size:15px;line-height:1.55;color:var(--sx-grey)}
-.sx-ct-ico{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sx-red)}
-.sx-ct-card > .sx-btn{margin-top:20px;width:100%;min-width:0;box-sizing:border-box}
-.sx-ct-mail{display:inline-block;margin-top:16px;font-size:15px;font-weight:600;color:#fff;text-decoration:none;border-bottom:2px solid var(--sx-red);padding-bottom:2px;word-break:break-all}
-.sx-ct-card .sx-form{margin-top:18px}
-.sx-ct-chatbtns{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.sx-ct-widgets{display:grid;gap:12px;margin-top:36px}
+.sx-ct-card{display:flex;flex-direction:column;border:1px solid var(--sx-line);border-radius:14px;background:var(--sx-card);overflow:hidden;transition:border-color .2s ease,box-shadow .2s ease}
+.sx-ct-card.is-open{border-color:rgba(255,72,72,.55);box-shadow:0 0 0 1px rgba(255,72,72,.18)}
+.sx-ct-card.sx-ct-recommended.is-open,.sx-ct-card.sx-ct-recommended{border-color:rgba(255,72,72,.45)}
+.sx-ct-card.sx-ct-recommended.is-open{border-color:var(--sx-red);box-shadow:0 0 0 1px rgba(255,72,72,.28),0 12px 32px rgba(255,72,72,.08)}
+.sx-ct-toggle{display:flex;align-items:center;gap:12px;width:100%;margin:0;padding:18px 18px;border:0;background:transparent;color:#fff;font:inherit;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.sx-ct-toggle:focus-visible{outline:2px solid var(--sx-red);outline-offset:-2px}
+.sx-ct-toggle-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:6px}
+.sx-ct-title{margin:0;font-size:18px;font-weight:700;letter-spacing:-.01em;line-height:1.2}
+.sx-ct-badge{display:inline-flex;align-self:flex-start;align-items:center;padding:3px 9px;border-radius:999px;background:var(--sx-red);color:#fff;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;line-height:1.3}
+.sx-ct-chevron{flex:none;width:10px;height:10px;border-right:2px solid #9a9a9a;border-bottom:2px solid #9a9a9a;transform:rotate(45deg);transition:transform .2s ease,border-color .2s ease;margin-top:-4px}
+.sx-ct-card.is-open .sx-ct-chevron{transform:rotate(225deg);margin-top:4px;border-color:var(--sx-red)}
+.sx-ct-panel{display:none;padding:0 18px 20px;border-top:1px solid transparent}
+.sx-ct-card.is-open .sx-ct-panel{display:block;border-top-color:rgba(255,255,255,.06)}
+.sx-ct-panel > p{margin:14px 0 0;font-size:15px;line-height:1.55;color:var(--sx-grey)}
+.sx-ct-panel > .sx-btn{margin-top:18px;width:100%;min-width:0;box-sizing:border-box}
+.sx-ct-mailhint{margin:12px 0 0;font-size:13px;line-height:1.5;color:var(--sx-dim)}
+.sx-ct-mailhint a{color:#fff;text-decoration:none;border-bottom:1px solid rgba(255,72,72,.7);padding-bottom:1px}
+.sx-ct-mailhint a:hover{color:var(--sx-red)}
+.sx-ct-card .sx-form{margin-top:16px}
+.sx-ct-chatbtns{display:flex;flex-direction:column;gap:10px;margin-top:18px}
 .sx-ct-chatbtns .sx-btn{width:100%;min-width:0;box-sizing:border-box;margin-top:0}
-.sx-form{display:grid;gap:16px}
-.sx-field label{display:block;margin-bottom:7px;font-size:14px;font-weight:500;color:#e6e6ea}
-.sx-field input,.sx-field textarea{display:block;width:100%;padding:14px 15px;border:1px solid #3a3a3e;border-radius:8px;background:#0d0d0e;color:#fff;font:400 16px/1.4 Poppins,system-ui,sans-serif;-webkit-appearance:none;appearance:none}
-.sx-field textarea{min-height:132px;resize:vertical}
-.sx-field input:focus,.sx-field textarea:focus{outline:none;border-color:var(--sx-red);box-shadow:0 0 0 3px rgba(255,72,72,.2)}
-.sx-form .sx-btn{width:100%;border:0;margin-top:4px}
-.sx-form-note{margin:0;font-size:13px;line-height:1.5;color:var(--sx-dim)}
+.sx-form{display:grid;gap:14px}
+.sx-field label{display:block;margin-bottom:6px;font-size:13px;font-weight:500;color:#cfcfd4}
+.sx-field .sx-req{color:var(--sx-red);font-weight:600}
+.sx-field input,.sx-field textarea,.sx-field select{display:block;width:100%;padding:13px 14px;border:1px solid #3a3a3e;border-radius:8px;background:#0d0d0e;color:#fff;font:400 16px/1.4 Poppins,system-ui,sans-serif;-webkit-appearance:none;appearance:none}
+.sx-field select{background-image:linear-gradient(45deg,transparent 50%,#9a9a9a 50%),linear-gradient(135deg,#9a9a9a 50%,transparent 50%);background-position:calc(100% - 18px) calc(50% - 2px),calc(100% - 12px) calc(50% - 2px);background-size:6px 6px,6px 6px;background-repeat:no-repeat;padding-right:36px}
+.sx-field textarea{min-height:120px;resize:vertical}
+.sx-field input:focus,.sx-field textarea:focus,.sx-field select:focus{outline:none;border-color:var(--sx-red);box-shadow:0 0 0 3px rgba(255,72,72,.2)}
+.sx-form .sx-btn{width:100%;border:0;margin-top:2px}
+.sx-form-note,.sx-form-recaptcha-note{margin:0;font-size:12.5px;line-height:1.5;color:var(--sx-dim)}
 .sx-form-msg{margin:0;font-size:14px;line-height:1.5;color:#fff;min-height:0}
 .sx-form-msg:empty{display:none}
 .sx-form-msg a{color:#fff}
+.grecaptcha-badge{visibility:hidden}
 @media (min-width:900px){
  .sx-contact .sx-h2{font-size:clamp(34px,4vw,48px)}
- .sx-ct-widgets{grid-template-columns:1fr 1.2fr 1fr;gap:20px;align-items:start;margin-top:48px}
- .sx-ct-card{padding:28px 24px}
+ .sx-ct-widgets{grid-template-columns:repeat(3,1fr);gap:16px;align-items:start;margin-top:48px}
+ .sx-ct-toggle{padding:20px 20px}
+ .sx-ct-title{font-size:19px}
+ .sx-ct-panel{padding:0 20px 22px}
  .sx-form .sx-btn{width:100%}
 }
 
@@ -323,7 +341,6 @@ section[id]{scroll-margin-top:var(--sxh-h,72px)}
 /* buttons & links */
 .sx .sx-btn{transition:background-color .2s ease,border-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}
 .sxh-cta{transition:background-color .2s ease,color .2s ease,transform .2s ease,box-shadow .2s ease}
-.sx-ct-mail{transition:color .2s ease,border-color .2s ease}
 .sxc-arrow{transition:background-color .2s ease,border-color .2s ease,transform .2s ease}
 .sx a:focus-visible,.sx button:focus-visible,.sxc:focus-visible{outline:2px solid var(--sx-red);outline-offset:3px;border-radius:4px}
 .sx .sx-btn:focus-visible{outline:2px solid #fff;outline-offset:3px;box-shadow:0 0 0 5px rgba(255,72,72,.35)}
@@ -336,7 +353,6 @@ section[id]{scroll-margin-top:var(--sxh-h,72px)}
  .sx .sx-btn.sx-outline:hover{box-shadow:0 10px 24px rgba(255,255,255,.12)}
  .sx .sx-btn:active{transform:translateY(0);box-shadow:none}
  .sxh-cta:hover{transform:translateY(-1px)}
- .sx-ct-mail:hover{color:var(--sx-red)}
  .sxc-arrow:hover{background:rgba(255,72,72,.16);border-color:var(--sx-red)}
  .sx-book:hover .sx-book-cover img{transform:perspective(1200px) translate3d(0,-10px,0) rotateY(-4deg) rotateZ(-.6deg);filter:drop-shadow(0 18px 26px rgba(255,72,72,.10))}
 }
@@ -459,7 +475,7 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
       <p class="sx-p">16 weeks. 24 hours of live instruction. A structured path from zero to real conversation.</p>
       <div class="sx-btns">
         <a class="sx-btn" href="/zero/">Join Level Zero</a>
-        <div class="sx-callwrap"><a class="sx-btn sx-outline" href="#assessment" data-sx-scroll>Schedule a call*</a><p class="sx-callnote">*Assessment or trial class, whatever fits.</p></div>
+        <div class="sx-callwrap"><a class="sx-btn sx-outline" href="#contacto" data-sx-scroll>I have questions</a></div>
       </div>
     </div>
   </div>
@@ -635,35 +651,58 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
   <div class="sx-wrap">
     <p class="sx-kicker">Contact</p>
     <h2 class="sx-h2">Have questions? <span class="sx-red">Contact us.</span></h2>
-    <p class="sx-p sx-ct-lead">Pick the option that works best for you &mdash; video call, email, or chat.</p>
-    <div class="sx-ct-widgets">
-      <article class="sx-ct-card">
-        <p class="sx-ct-ico" aria-hidden="true">Video</p>
-        <h3>Video call</h3>
-        <p>Need an assessment, a trial, or have questions? Schedule a video call with us.</p>
-        <a class="sx-btn" href="#" target="_top" data-sx-link="ASSESSMENT_URL">Schedule a video call</a>
+    <p class="sx-p sx-ct-lead">Choose how you&rsquo;d like to reach us &mdash; one option at a time.</p>
+    <div class="sx-ct-widgets" data-sx-ct-accordion>
+      <article class="sx-ct-card sx-ct-recommended">
+        <button type="button" class="sx-ct-toggle" aria-expanded="false" aria-controls="sx-ct-panel-video" id="sx-ct-btn-video">
+          <span class="sx-ct-toggle-text"><span class="sx-ct-badge">Recommended</span><span class="sx-ct-title">Video call</span></span>
+          <span class="sx-ct-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sx-ct-panel" id="sx-ct-panel-video" role="region" aria-labelledby="sx-ct-btn-video" hidden>
+          <p>Need an assessment, a trial, or have questions? Schedule a video call with us.</p>
+          <a class="sx-btn" href="#" target="_top" data-sx-link="ASSESSMENT_URL">Schedule a video call</a>
+        </div>
       </article>
       <article class="sx-ct-card sx-ct-card-email">
-        <p class="sx-ct-ico" aria-hidden="true">Email</p>
-        <h3>Email</h3>
-        <p>Fill this form or email us your questions &mdash; we can reply by email.</p>
-        <a class="sx-ct-mail" href="mailto:adan@spanishxperts.com" target="_top">adan@spanishxperts.com</a>
-        <form class="sx-form" id="sx-contact-form" novalidate>
-          <div class="sx-field"><label for="sx-nombre">Name</label><input id="sx-nombre" name="nombre" type="text" autocomplete="name" required></div>
-          <div class="sx-field"><label for="sx-email">Email</label><input id="sx-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
-          <div class="sx-field"><label for="sx-mensaje">Message</label><textarea id="sx-mensaje" name="mensaje" rows="5" required></textarea></div>
-          <button class="sx-btn" type="submit">Send</button>
-          <p class="sx-form-msg" role="status" aria-live="polite"></p>
-          <p class="sx-form-note">Clicking &ldquo;Send&rdquo; opens your email app with the message ready to send.</p>
-        </form>
+        <button type="button" class="sx-ct-toggle" aria-expanded="false" aria-controls="sx-ct-panel-email" id="sx-ct-btn-email">
+          <span class="sx-ct-toggle-text"><span class="sx-ct-title">Email</span></span>
+          <span class="sx-ct-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sx-ct-panel" id="sx-ct-panel-email" role="region" aria-labelledby="sx-ct-btn-email" hidden>
+          <p>Tell us a bit about you and we&rsquo;ll reply by email.</p>
+          <form class="sx-form" id="sx-contact-form" novalidate>
+            <div class="sx-field"><label for="sx-nombre">Name <span class="sx-req" aria-hidden="true">*</span></label><input id="sx-nombre" name="nombre" type="text" autocomplete="name" required></div>
+            <div class="sx-field"><label for="sx-email">Email <span class="sx-req" aria-hidden="true">*</span></label><input id="sx-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+            <div class="sx-field"><label for="sx-motivo">Reason <span class="sx-req" aria-hidden="true">*</span></label>
+              <select id="sx-motivo" name="motivo" required>
+                <option value="" selected disabled>Select a reason</option>
+                <option value="Need an assessment">Need an assessment</option>
+                <option value="I want to request a trial">I want to request a trial</option>
+                <option value="Special case">Special case</option>
+                <option value="Other / more information">Other / more information</option>
+              </select>
+            </div>
+            <div class="sx-field"><label for="sx-experiencia">Tell us about your Spanish experience, your goals, or anything else that matters <span class="sx-req" aria-hidden="true">*</span></label><textarea id="sx-experiencia" name="experiencia" rows="5" required></textarea></div>
+            <div class="sx-field"><label for="sx-mes-inicio">Estimated month to start <span class="sx-req" aria-hidden="true">*</span></label><input id="sx-mes-inicio" name="mes_inicio" type="month" required></div>
+            <button class="sx-btn" type="submit">Send</button>
+            <p class="sx-form-msg" role="status" aria-live="polite"></p>
+            <p class="sx-form-note">Send opens your email app with the message ready.</p>
+            <p class="sx-form-recaptcha-note" id="sx-recaptcha-note" hidden>Spam protection (reCAPTCHA) activates once the site key is configured.</p>
+            <p class="sx-ct-mailhint">Or write us at <a href="mailto:adan@spanishxperts.com" target="_top">adan@spanishxperts.com</a></p>
+          </form>
+        </div>
       </article>
       <article class="sx-ct-card">
-        <p class="sx-ct-ico" aria-hidden="true">Chat</p>
-        <h3>Chat</h3>
-        <p>Message us on WhatsApp or Messenger for a quick reply.</p>
-        <div class="sx-ct-chatbtns">
-          <a class="sx-btn sx-outline" href="#" target="_blank" rel="noopener noreferrer" data-sx-link="WHATSAPP_URL">WhatsApp</a>
-          <a class="sx-btn sx-outline" href="#" target="_blank" rel="noopener noreferrer" data-sx-link="MESSENGER_URL">Messenger</a>
+        <button type="button" class="sx-ct-toggle" aria-expanded="false" aria-controls="sx-ct-panel-chat" id="sx-ct-btn-chat">
+          <span class="sx-ct-toggle-text"><span class="sx-ct-title">Chat</span></span>
+          <span class="sx-ct-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sx-ct-panel" id="sx-ct-panel-chat" role="region" aria-labelledby="sx-ct-btn-chat" hidden>
+          <p>Message us on WhatsApp or Messenger for a quick reply.</p>
+          <div class="sx-ct-chatbtns">
+            <a class="sx-btn sx-outline" href="#" target="_blank" rel="noopener noreferrer" data-sx-link="WHATSAPP_URL">WhatsApp</a>
+            <a class="sx-btn sx-outline" href="#" target="_blank" rel="noopener noreferrer" data-sx-link="MESSENGER_URL">Messenger</a>
+          </div>
         </div>
       </article>
     </div>
@@ -693,16 +732,55 @@ root.addEventListener("touchend",function(e){if(!drag)return;drag=false;var dx=e
 root.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")show(cur-1);if(e.key==="ArrowRight")show(cur+1)});
 })();
 
-(function(){var f=document.getElementById("sx-contact-form");if(!f)return;var TO="adan@spanishxperts.com",msg=f.querySelector(".sx-form-msg");
-f.addEventListener("submit",function(e){e.preventDefault();
- var n=f.nombre.value.trim(),m=f.email.value.trim(),t=f.mensaje.value.trim();
- if(!n||!m||!t){msg.textContent="Please fill in Name, Email, and Message.";return}
- if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){msg.textContent="Please check your email — it does not look valid.";return}
- var subject="Question from the website \u2013 "+n,body="Name: "+n+"\nEmail: "+m+"\n\nMessage:\n"+t+"\n";
- var url="mailto:"+TO+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
- msg.innerHTML="Opening your email app\u2026 If it does not open, write us at <a href=\"mailto:"+TO+"\" target=\"_top\">"+TO+"</a>.";
- try{window.top.location.href=url}catch(err){try{window.location.href=url}catch(err2){window.open(url,"_blank")}}
-});})();
+(function(){
+ var root=document.querySelector("[data-sx-ct-accordion]");
+ if(root){
+  var cards=[].slice.call(root.querySelectorAll(".sx-ct-card"));
+  function closeAll(except){cards.forEach(function(c){if(c===except)return;c.classList.remove("is-open");var b=c.querySelector(".sx-ct-toggle"),p=c.querySelector(".sx-ct-panel");if(b)b.setAttribute("aria-expanded","false");if(p)p.hidden=true})}
+  cards.forEach(function(card){var btn=card.querySelector(".sx-ct-toggle"),panel=card.querySelector(".sx-ct-panel");if(!btn||!panel)return;
+   btn.addEventListener("click",function(){var open=card.classList.contains("is-open");closeAll(open?null:card);if(open){card.classList.remove("is-open");btn.setAttribute("aria-expanded","false");panel.hidden=true}else{card.classList.add("is-open");btn.setAttribute("aria-expanded","true");panel.hidden=false}});
+  });
+ }
+})();
+
+(function(){
+ var f=document.getElementById("sx-contact-form");if(!f)return;
+ var C=window.SX_CONFIG||{},TO="adan@spanishxperts.com",msg=f.querySelector(".sx-form-msg"),note=document.getElementById("sx-recaptcha-note");
+ var key=C.RECAPTCHA_SITE_KEY,hasKey=typeof key==="string"&&key!=="RECAPTCHA_SITE_KEY"&&key.trim().length>8;
+ if(note){note.hidden=!!hasKey}
+ function loadRecaptcha(cb){
+  if(window.grecaptcha&&window.grecaptcha.execute){cb();return}
+  var s=document.createElement("script");s.src="https://www.google.com/recaptcha/api.js?render="+encodeURIComponent(key);s.async=true;
+  s.onload=function(){cb()};s.onerror=function(){msg.textContent="Could not load spam protection. Please try again, or email us directly.";};
+  document.head.appendChild(s);
+ }
+ function openMail(n,m,motivo,exp,mes,token){
+  var subject="Question from the website \u2013 "+n;
+  var body="Name: "+n+"\nEmail: "+m+"\nReason: "+motivo+"\nEstimated month to start: "+mes+"\n\nSpanish experience / goals:\n"+exp+"\n";
+  if(token)body+="\nreCAPTCHA token: "+token+"\n";
+  var url="mailto:"+TO+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
+  msg.innerHTML="Opening your email app\u2026 If it does not open, write us at <a href=\"mailto:"+TO+"\" target=\"_top\">"+TO+"</a>.";
+  try{window.top.location.href=url}catch(err){try{window.location.href=url}catch(err2){window.open(url,"_blank")}}
+ }
+ f.addEventListener("submit",function(e){e.preventDefault();
+  var n=(f.nombre&&f.nombre.value||"").trim();
+  var m=(f.email&&f.email.value||"").trim();
+  var motivo=(f.motivo&&f.motivo.value||"").trim();
+  var exp=(f.experiencia&&f.experiencia.value||"").trim();
+  var mes=(f.mes_inicio&&f.mes_inicio.value||"").trim();
+  if(!n||!m||!motivo||!exp||!mes){msg.textContent="Please fill in Name, Email, Reason, your experience/goals, and estimated start month.";return}
+  if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){msg.textContent="Please check your email — it does not look valid.";return}
+  if(!hasKey){openMail(n,m,motivo,exp,mes,null);return}
+  msg.textContent="Checking spam protection\u2026";
+  loadRecaptcha(function(){
+   try{
+    window.grecaptcha.ready(function(){
+     window.grecaptcha.execute(key,{action:"contact"}).then(function(token){openMail(n,m,motivo,exp,mes,token)}).catch(function(){msg.textContent="Spam check failed. Please try again, or email us directly.";});
+    });
+   }catch(err){msg.textContent="Spam check failed. Please try again, or email us directly."}
+  });
+ });
+})();
 </script>
 <script id="sx-anim-js">
 /* Subtle motion: scroll reveal (IntersectionObserver) + light parallax (rAF, transform only). */

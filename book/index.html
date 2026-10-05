@@ -97,35 +97,58 @@
   <div class="sx-wrap">
     <p class="sx-kicker">Contact</p>
     <h2 class="sx-h2">Have questions? <span class="sx-red">Contact us.</span></h2>
-    <p class="sx-p sx-ct-lead">Pick the option that works best for you &mdash; video call, email, or chat.</p>
-    <div class="sx-ct-widgets">
-      <article class="sx-ct-card">
-        <p class="sx-ct-ico" aria-hidden="true">Video</p>
-        <h3>Video call</h3>
-        <p>Need an assessment, a trial, or have questions? Schedule a video call with us.</p>
-        <a class="sx-btn" href="https://spanishxperts.as.me" target="_top">Schedule a video call</a>
+    <p class="sx-p sx-ct-lead">Choose how you&rsquo;d like to reach us &mdash; one option at a time.</p>
+    <div class="sx-ct-widgets" data-sx-ct-accordion>
+      <article class="sx-ct-card sx-ct-recommended">
+        <button type="button" class="sx-ct-toggle" aria-expanded="false" aria-controls="sx-ct-panel-video" id="sx-ct-btn-video">
+          <span class="sx-ct-toggle-text"><span class="sx-ct-badge">Recommended</span><span class="sx-ct-title">Video call</span></span>
+          <span class="sx-ct-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sx-ct-panel" id="sx-ct-panel-video" role="region" aria-labelledby="sx-ct-btn-video" hidden>
+          <p>Need an assessment, a trial, or have questions? Schedule a video call with us.</p>
+          <a class="sx-btn" href="https://spanishxperts.as.me" target="_top">Schedule a video call</a>
+        </div>
       </article>
       <article class="sx-ct-card sx-ct-card-email">
-        <p class="sx-ct-ico" aria-hidden="true">Email</p>
-        <h3>Email</h3>
-        <p>Fill this form or email us your questions &mdash; we can reply by email.</p>
-        <a class="sx-ct-mail" href="mailto:adan@spanishxperts.com" target="_top">adan@spanishxperts.com</a>
-        <form class="sx-form" id="sx-contact-form" novalidate>
-          <div class="sx-field"><label for="sx-nombre">Name</label><input id="sx-nombre" name="nombre" type="text" autocomplete="name" required></div>
-          <div class="sx-field"><label for="sx-email">Email</label><input id="sx-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
-          <div class="sx-field"><label for="sx-mensaje">Message</label><textarea id="sx-mensaje" name="mensaje" rows="5" required></textarea></div>
-          <button class="sx-btn" type="submit">Send</button>
-          <p class="sx-form-msg" role="status" aria-live="polite"></p>
-          <p class="sx-form-note">Clicking &ldquo;Send&rdquo; opens your email app with the message ready to send.</p>
-        </form>
+        <button type="button" class="sx-ct-toggle" aria-expanded="false" aria-controls="sx-ct-panel-email" id="sx-ct-btn-email">
+          <span class="sx-ct-toggle-text"><span class="sx-ct-title">Email</span></span>
+          <span class="sx-ct-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sx-ct-panel" id="sx-ct-panel-email" role="region" aria-labelledby="sx-ct-btn-email" hidden>
+          <p>Tell us a bit about you and we&rsquo;ll reply by email.</p>
+          <form class="sx-form" id="sx-contact-form" novalidate>
+            <div class="sx-field"><label for="sx-nombre">Name <span class="sx-req" aria-hidden="true">*</span></label><input id="sx-nombre" name="nombre" type="text" autocomplete="name" required></div>
+            <div class="sx-field"><label for="sx-email">Email <span class="sx-req" aria-hidden="true">*</span></label><input id="sx-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+            <div class="sx-field"><label for="sx-motivo">Reason <span class="sx-req" aria-hidden="true">*</span></label>
+              <select id="sx-motivo" name="motivo" required>
+                <option value="" selected disabled>Select a reason</option>
+                <option value="Need an assessment">Need an assessment</option>
+                <option value="I want to request a trial">I want to request a trial</option>
+                <option value="Special case">Special case</option>
+                <option value="Other / more information">Other / more information</option>
+              </select>
+            </div>
+            <div class="sx-field"><label for="sx-experiencia">Tell us about your Spanish experience, your goals, or anything else that matters <span class="sx-req" aria-hidden="true">*</span></label><textarea id="sx-experiencia" name="experiencia" rows="5" required></textarea></div>
+            <div class="sx-field"><label for="sx-mes-inicio">Estimated month to start <span class="sx-req" aria-hidden="true">*</span></label><input id="sx-mes-inicio" name="mes_inicio" type="month" required></div>
+            <button class="sx-btn" type="submit">Send</button>
+            <p class="sx-form-msg" role="status" aria-live="polite"></p>
+            <p class="sx-form-note">Send opens your email app with the message ready.</p>
+            <p class="sx-form-recaptcha-note" id="sx-recaptcha-note" hidden>Spam protection (reCAPTCHA) activates once the site key is configured.</p>
+            <p class="sx-ct-mailhint">Or write us at <a href="mailto:adan@spanishxperts.com" target="_top">adan@spanishxperts.com</a></p>
+          </form>
+        </div>
       </article>
       <article class="sx-ct-card">
-        <p class="sx-ct-ico" aria-hidden="true">Chat</p>
-        <h3>Chat</h3>
-        <p>Message us on WhatsApp or Messenger for a quick reply.</p>
-        <div class="sx-ct-chatbtns">
-          <a class="sx-btn sx-outline" href="https://wa.me/19569701615" target="_blank" rel="noopener noreferrer">WhatsApp</a>
-          <a class="sx-btn sx-outline" href="https://m.me/spanishxperts" target="_blank" rel="noopener noreferrer">Messenger</a>
+        <button type="button" class="sx-ct-toggle" aria-expanded="false" aria-controls="sx-ct-panel-chat" id="sx-ct-btn-chat">
+          <span class="sx-ct-toggle-text"><span class="sx-ct-title">Chat</span></span>
+          <span class="sx-ct-chevron" aria-hidden="true"></span>
+        </button>
+        <div class="sx-ct-panel" id="sx-ct-panel-chat" role="region" aria-labelledby="sx-ct-btn-chat" hidden>
+          <p>Message us on WhatsApp or Messenger for a quick reply.</p>
+          <div class="sx-ct-chatbtns">
+            <a class="sx-btn sx-outline" href="https://wa.me/19569701615" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="sx-btn sx-outline" href="https://m.me/spanishxperts" target="_blank" rel="noopener noreferrer">Messenger</a>
+          </div>
         </div>
       </article>
     </div>
