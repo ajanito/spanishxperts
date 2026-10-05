@@ -3,7 +3,7 @@
 .sx-gold{color:var(--sx-gold)}
 .sxh-links a[aria-current="page"]{color:var(--sx-red);border-bottom-color:var(--sx-red)}
 
-/* ---- PLACEHOLDERS: dashed gold boxes, intentionally loud ---- */
+/* ---- PLACEHOLDERS: never shown publicly (unknown data = hidden block) ---- */
 .sx-ph{display:inline-block;max-width:100%;border:2px dashed var(--sx-gold);border-radius:8px;padding:6px 10px;background:rgba(245,184,0,.08);color:var(--sx-gold);font:600 13px/1.45 Poppins,system-ui,sans-serif;letter-spacing:.02em;text-transform:none;overflow-wrap:anywhere;vertical-align:middle}
 .sx-ph-block{display:block;padding:14px 16px;font-size:14px}
 .sx-ph-tag{display:block;margin-top:8px;text-align:center}
@@ -175,3 +175,10 @@ a[data-ph]{outline:2px dashed var(--sx-gold);outline-offset:4px}
 @media (prefers-reduced-motion:reduce){.sx-booking-badge::before{animation:none}}
 /* nav with 6 links: tighten on small desktops */
 @media (min-width:900px) and (max-width:1099px){.sxh-nav,.sxh-links{gap:13px}.sxh-links a{font-size:13.5px}.sxh-logo img{height:28px}}
+
+/* Public build: hide any leftover placeholder markers */
+[hidden]{display:none!important}
+.sx-ph,[data-placeholder],a[data-ph]{display:none!important}
+.sx-lz-price{display:flex;align-items:baseline;gap:12px;margin:22px 0 0}
+.sx-lz-price b{font-size:44px;font-weight:800;letter-spacing:-.02em;color:#fff}
+.sx-lz-price span{font-size:15px;color:var(--sx-grey)}

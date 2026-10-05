@@ -201,7 +201,7 @@ body{color:#fff;font-family:Poppins,system-ui,-apple-system,"Segoe UI",Arial,san
 :root{--sx-gold:#F5B800}
 .sx-ph{display:inline-block;max-width:100%;border:2px dashed var(--sx-gold);border-radius:8px;padding:6px 10px;background:rgba(245,184,0,.08);color:var(--sx-gold);font:600 13px/1.45 Poppins,system-ui,sans-serif;letter-spacing:.02em;text-transform:none;overflow-wrap:anywhere;vertical-align:middle}
 .sx-ph-tag{display:block;margin-top:8px;text-align:center}
-a[data-ph]{outline:2px dashed var(--sx-gold);outline-offset:4px}
+.sx-ph,[data-placeholder],a[data-ph]{display:none!important}
 .sx-phwrap{display:flex;flex-direction:column;align-items:stretch;gap:6px;width:100%}
 .sx-ct-lead{max-width:560px}
 .sx-ct-widgets{display:grid;gap:12px;margin-top:36px}
@@ -567,9 +567,11 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
         <ul class="sx-facts">
           <li><b>16</b><span>weeks</span></li>
           <li><b>24 h</b><span>of live instruction</span></li>
-          <li><b>90 min</b><span>per live class</span></li>
+          <li><b>1.5 h</b><span>per week, live</span></li>
+          <li><b>$480</b><span>full group package</span></li>
         </ul>
-        <div class="sx-btns"><a class="sx-btn" href="/zero/">Enroll now</a></div>
+        <p class="sx-small sx-lz-when">January 2027 groups &middot; exact start date coming soon</p>
+        <div class="sx-btns"><a class="sx-btn" href="/zero/">See Level Zero</a><a class="sx-btn sx-outline" href="#contacto" data-sx-scroll>I have questions</a></div>
       </div>
     </div>
   </div>
