@@ -394,6 +394,8 @@ section[id]{scroll-margin-top:var(--sxh-h,72px)}
 .sx-books-head .sx-books-note{max-width:600px;margin-left:auto;margin-right:auto}
 @media (min-width:900px){.sx-books-rail{display:flex;flex-wrap:wrap;justify-content:center;gap:40px 24px}.sx-books-rail .sx-book{flex:0 0 calc((100% - 72px)/4)}}
 @media (min-width:900px) and (max-width:1099px){.sx .sx-book h3{font-size:16px}}
+/* nav with 6 links: tighten on small desktops */
+@media (min-width:900px) and (max-width:1099px){.sxh-nav,.sxh-links{gap:13px}.sxh-links a{font-size:13.5px}.sxh-logo img{height:28px}}
 </style>
 </head>
 <body class="sx">
@@ -404,6 +406,7 @@ section[id]{scroll-margin-top:var(--sxh-h,72px)}
     <nav class="sxh-nav" id="sxh-nav" aria-label="Main">
       <ul class="sxh-links">
         <li><a href="/zero/">Level Zero</a></li>
+        <li><a href="/book/">Private classes</a></li>
         <li><a href="/community/">Community</a></li>
         <li><a href="/books/">Books</a></li>
         <li><a href="/resources/">Resources</a></li>

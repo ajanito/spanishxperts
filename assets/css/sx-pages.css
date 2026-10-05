@@ -157,3 +157,21 @@ a[data-ph]{outline:2px dashed var(--sx-gold);outline-offset:4px}
 .sx-sbook-img{width:100%;max-width:360px;margin:6px auto -10px}
 .sx .sx-sbook-img img{filter:none}
 @media (min-width:900px){.sx-bk-img{max-width:none}}
+
+/* ---- /book: private classes (Oct 5 2026) ---- */
+.sx-bkhero{display:grid;gap:28px;align-items:center}
+.sx .sx-bkhero-img{width:120px;height:120px;border-radius:16px;object-fit:cover;object-position:50% 16%;border:1px solid var(--sx-line);order:-1}
+@media (min-width:900px){.sx-bkhero{grid-template-columns:1fr minmax(260px,360px);gap:64px}.sx .sx-bkhero-img{order:0;width:100%;height:auto;aspect-ratio:4/5}}
+@media (min-width:900px){.sx-steps.sx-steps3{grid-template-columns:repeat(3,1fr)}}
+.sx-booking{margin:32px auto 0;max-width:900px;border:1px solid var(--sx-line);border-top:3px solid var(--sx-red);border-radius:14px;background:var(--sx-card);overflow:hidden}
+.sx-booking iframe{display:block;width:100%;min-height:760px;border:0;background:#fff}
+.sx-booking-pending{padding:32px 22px;text-align:center}
+.sx-booking-pending .sx-p{max-width:520px;margin-left:auto;margin-right:auto}
+.sx-booking-badge{display:inline-flex;align-items:center;gap:8px;margin:0;padding:6px 12px;border-radius:999px;background:rgba(255,72,72,.12);color:#fff;font-size:12.5px;font-weight:600;letter-spacing:.04em}
+.sx-booking-badge::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--sx-red);animation:sx-pulse 1.6s ease-in-out infinite}
+@keyframes sx-pulse{0%,100%{opacity:1}50%{opacity:.3}}
+.sx-booking-ph{margin:22px 0 0}
+@media (min-width:768px){.sx-booking-pending{padding:48px 40px}}
+@media (prefers-reduced-motion:reduce){.sx-booking-badge::before{animation:none}}
+/* nav with 6 links: tighten on small desktops */
+@media (min-width:900px) and (max-width:1099px){.sxh-nav,.sxh-links{gap:13px}.sxh-links a{font-size:13.5px}.sxh-logo img{height:28px}}
