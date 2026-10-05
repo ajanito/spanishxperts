@@ -23,9 +23,11 @@ root.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")show(cur-1);i
  var root=document.querySelector("[data-sx-ct-accordion]");
  if(root){
   var cards=[].slice.call(root.querySelectorAll(".sx-ct-card"));
-  function closeAll(except){cards.forEach(function(c){if(c===except)return;c.classList.remove("is-open");var b=c.querySelector(".sx-ct-toggle"),p=c.querySelector(".sx-ct-panel");if(b)b.setAttribute("aria-expanded","false");if(p)p.hidden=true})}
+  function setOpen(card,open){var b=card.querySelector(".sx-ct-toggle"),p=card.querySelector(".sx-ct-panel");card.classList.toggle("is-open",!!open);if(b)b.setAttribute("aria-expanded",open?"true":"false");if(p){if(open)p.removeAttribute("hidden");else p.setAttribute("hidden","")}}
+  function closeAll(except){cards.forEach(function(c){if(c!==except)setOpen(c,false)})}
+  cards.forEach(function(c){setOpen(c,false)});
   cards.forEach(function(card){var btn=card.querySelector(".sx-ct-toggle"),panel=card.querySelector(".sx-ct-panel");if(!btn||!panel)return;
-   btn.addEventListener("click",function(){var open=card.classList.contains("is-open");closeAll(open?null:card);if(open){card.classList.remove("is-open");btn.setAttribute("aria-expanded","false");panel.hidden=true}else{card.classList.add("is-open");btn.setAttribute("aria-expanded","true");panel.hidden=false}});
+   btn.addEventListener("click",function(){var open=card.classList.contains("is-open");closeAll(open?null:card);setOpen(card,!open)});
   });
  }
 })();
