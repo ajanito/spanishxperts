@@ -33,7 +33,7 @@ root.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")show(cur-1);i
 (function(){
  var f=document.getElementById("sx-contact-form");if(!f)return;
  window.SX_CONFIG=window.SX_CONFIG||{};
- if(!window.SX_CONFIG.RECAPTCHA_SITE_KEY)window.SX_CONFIG.RECAPTCHA_SITE_KEY="RECAPTCHA_SITE_KEY";
+ if(!window.SX_CONFIG.RECAPTCHA_SITE_KEY)window.SX_CONFIG.RECAPTCHA_SITE_KEY="6Lff5uAtAAAAAM1FRDr1zea_vEpcPD8dmdFNm3by";
  var C=window.SX_CONFIG,TO="adan@spanishxperts.com",msg=f.querySelector(".sx-form-msg"),note=document.getElementById("sx-recaptcha-note");
  var key=C.RECAPTCHA_SITE_KEY,hasKey=typeof key==="string"&&key!=="RECAPTCHA_SITE_KEY"&&key.trim().length>8;
  if(note){note.hidden=!!hasKey}
