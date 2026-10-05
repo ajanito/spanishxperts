@@ -22,11 +22,11 @@ root.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")show(cur-1);i
 (function(){var f=document.getElementById("sx-contact-form");if(!f)return;var TO="adan@spanishxperts.com",msg=f.querySelector(".sx-form-msg");
 f.addEventListener("submit",function(e){e.preventDefault();
  var n=f.nombre.value.trim(),m=f.email.value.trim(),t=f.mensaje.value.trim();
- if(!n||!m||!t){msg.textContent="Por favor completa Nombre, Email y Mensaje.";return}
- if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){msg.textContent="Revisa tu email, parece que no es v\u00e1lido.";return}
- var subject="Pregunta desde la web \u2013 "+n,body="Nombre: "+n+"\nEmail: "+m+"\n\nMensaje:\n"+t+"\n";
+ if(!n||!m||!t){msg.textContent="Please fill in Name, Email, and Message.";return}
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){msg.textContent="Please check your email — it does not look valid.";return}
+ var subject="Question from the website \u2013 "+n,body="Name: "+n+"\nEmail: "+m+"\n\nMessage:\n"+t+"\n";
  var url="mailto:"+TO+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
- msg.innerHTML="Abriendo tu app de correo\u2026 Si no se abre, escr\u00edbeme a <a href=\"mailto:"+TO+"\" target=\"_top\">"+TO+"</a>.";
+ msg.innerHTML="Opening your email app\u2026 If it does not open, write us at <a href=\"mailto:"+TO+"\" target=\"_top\">"+TO+"</a>.";
  try{window.top.location.href=url}catch(err){try{window.location.href=url}catch(err2){window.open(url,"_blank")}}
 });})();
 

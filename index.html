@@ -12,7 +12,9 @@
 window.SX_CONFIG = {
     ENROLL_URL:          "ENROLL_URL"   /* Link de inscripción a Spanish Level Zero (página de pago / plan / programa) */,
     COMMUNITY_URL:       "COMMUNITY_URL"   /* Link para unirse a la comunidad gratuita */,
-    ASSESSMENT_URL:      "https://spanishxperts.as.me"   /* Link de Wix Bookings del servicio "Free Spanish Assessment & Game Plan" */,
+    ASSESSMENT_URL:      "https://spanishxperts.as.me"   /* Acuity Scheduling: assessment / trial / video call */,
+    MESSENGER_URL:       "https://m.me/spanishxperts"   /* Facebook Messenger short link for spanishxperts page */,
+    WHATSAPP_URL:        "https://wa.me/19569701615"   /* WhatsApp Business: +1 956 970 1615 (confirmed Andrés Oct 5 2026) */,
     VIDEO_LISA_VERTICAL: "https://video.wixstatic.com/video/fa487c_cf9d4efc0e59481c92103ec9bae3cb8b/720p/mp4/file.mp4"   /* URL de Wix Media de lisa_herceg_vertical_logo.mp4 */,
     VIDEO_ERIN_VERTICAL: "https://video.wixstatic.com/video/fa487c_6b6a15435828456ab7bf0d5fbafefe4f/720p/mp4/file.mp4"   /* URL de Wix Media de erin_lim_vertical_logo.mp4 */,
     VIDEO_LISA_16X9:     "https://video.wixstatic.com/video/fa487c_00bb8e5eb4094c19a763ba732ab861a2/720p/mp4/file.mp4"   /* URL de Wix Media de lisa_herceg_16x9_logo.mp4 */,
@@ -194,8 +196,23 @@ body{color:#fff;font-family:Poppins,system-ui,-apple-system,"Segoe UI",Arial,san
 .sx .sx-path .sx-btn{width:100%;min-width:0;padding:12px 14px}
 @media (min-width:768px){.sx-paths{grid-template-columns:repeat(3,1fr);gap:20px;margin-top:56px}.sx-path{padding:30px 26px}}
 
-.sx-ct-grid{display:grid;gap:30px}
-.sx-ct-mail{display:inline-block;margin-top:18px;font-size:16px;font-weight:600;color:#fff;text-decoration:none;border-bottom:2px solid var(--sx-red);padding-bottom:2px;word-break:break-all}
+/* Contact widgets (Oct 5 2026 redesign) */
+:root{--sx-gold:#F5B800}
+.sx-ph{display:inline-block;max-width:100%;border:2px dashed var(--sx-gold);border-radius:8px;padding:6px 10px;background:rgba(245,184,0,.08);color:var(--sx-gold);font:600 13px/1.45 Poppins,system-ui,sans-serif;letter-spacing:.02em;text-transform:none;overflow-wrap:anywhere;vertical-align:middle}
+.sx-ph-tag{display:block;margin-top:8px;text-align:center}
+a[data-ph]{outline:2px dashed var(--sx-gold);outline-offset:4px}
+.sx-phwrap{display:flex;flex-direction:column;align-items:stretch;gap:6px;width:100%}
+.sx-ct-lead{max-width:560px}
+.sx-ct-widgets{display:grid;gap:16px;margin-top:36px}
+.sx-ct-card{display:flex;flex-direction:column;border:1px solid var(--sx-line);border-radius:14px;background:var(--sx-card);padding:24px 22px}
+.sx-ct-card h3{margin:0;font-size:20px;font-weight:700;letter-spacing:-.01em}
+.sx-ct-card > p:not(.sx-ct-ico){margin:8px 0 0;font-size:15px;line-height:1.55;color:var(--sx-grey)}
+.sx-ct-ico{margin:0 0 10px;font-size:12px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--sx-red)}
+.sx-ct-card > .sx-btn{margin-top:20px;width:100%;min-width:0;box-sizing:border-box}
+.sx-ct-mail{display:inline-block;margin-top:16px;font-size:15px;font-weight:600;color:#fff;text-decoration:none;border-bottom:2px solid var(--sx-red);padding-bottom:2px;word-break:break-all}
+.sx-ct-card .sx-form{margin-top:18px}
+.sx-ct-chatbtns{display:flex;flex-direction:column;gap:12px;margin-top:20px}
+.sx-ct-chatbtns .sx-btn{width:100%;min-width:0;box-sizing:border-box;margin-top:0}
 .sx-form{display:grid;gap:16px}
 .sx-field label{display:block;margin-bottom:7px;font-size:14px;font-weight:500;color:#e6e6ea}
 .sx-field input,.sx-field textarea{display:block;width:100%;padding:14px 15px;border:1px solid #3a3a3e;border-radius:8px;background:#0d0d0e;color:#fff;font:400 16px/1.4 Poppins,system-ui,sans-serif;-webkit-appearance:none;appearance:none}
@@ -206,7 +223,12 @@ body{color:#fff;font-family:Poppins,system-ui,-apple-system,"Segoe UI",Arial,san
 .sx-form-msg{margin:0;font-size:14px;line-height:1.5;color:#fff;min-height:0}
 .sx-form-msg:empty{display:none}
 .sx-form-msg a{color:#fff}
-@media (min-width:768px){.sx-contact .sx-h2{font-size:clamp(34px,4vw,48px)}.sx-ct-grid{grid-template-columns:1fr 1.1fr;gap:64px;align-items:start}.sx-form .sx-btn{width:auto;justify-self:start}}
+@media (min-width:900px){
+ .sx-contact .sx-h2{font-size:clamp(34px,4vw,48px)}
+ .sx-ct-widgets{grid-template-columns:1fr 1.2fr 1fr;gap:20px;align-items:start;margin-top:48px}
+ .sx-ct-card{padding:28px 24px}
+ .sx-form .sx-btn{width:100%}
+}
 
 .sx-foot{padding:28px 0;border-top:1px solid #1d1d1f;text-align:center;font-size:13px;color:var(--sx-dim)}
 .sx-foot p{margin:0}
@@ -609,22 +631,42 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
     </div>
   </div>
 </section>
-<section class="sx-sec sx-contact" id="contacto" lang="es">
-  <div class="sx-wrap sx-ct-grid">
-    <div>
-      <p class="sx-kicker">Contacto</p>
-      <h2 class="sx-h2">&iquest;Hablas espa&ntilde;ol y tienes preguntas?</h2>
-      <p class="sx-p">Escr&iacute;beme con este formulario o directamente a:</p>
-      <a class="sx-ct-mail" href="mailto:adan@spanishxperts.com" target="_top">adan@spanishxperts.com</a>
+<section class="sx-sec sx-contact" id="contacto">
+  <div class="sx-wrap">
+    <p class="sx-kicker">Contact</p>
+    <h2 class="sx-h2">Have questions? <span class="sx-red">Contact us.</span></h2>
+    <p class="sx-p sx-ct-lead">Pick the option that works best for you &mdash; video call, email, or chat.</p>
+    <div class="sx-ct-widgets">
+      <article class="sx-ct-card">
+        <p class="sx-ct-ico" aria-hidden="true">Video</p>
+        <h3>Video call</h3>
+        <p>Need an assessment, a trial, or have questions? Schedule a video call with us.</p>
+        <a class="sx-btn" href="#" target="_top" data-sx-link="ASSESSMENT_URL">Schedule a video call</a>
+      </article>
+      <article class="sx-ct-card sx-ct-card-email">
+        <p class="sx-ct-ico" aria-hidden="true">Email</p>
+        <h3>Email</h3>
+        <p>Fill this form or email us your questions &mdash; we can reply by email.</p>
+        <a class="sx-ct-mail" href="mailto:adan@spanishxperts.com" target="_top">adan@spanishxperts.com</a>
+        <form class="sx-form" id="sx-contact-form" novalidate>
+          <div class="sx-field"><label for="sx-nombre">Name</label><input id="sx-nombre" name="nombre" type="text" autocomplete="name" required></div>
+          <div class="sx-field"><label for="sx-email">Email</label><input id="sx-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+          <div class="sx-field"><label for="sx-mensaje">Message</label><textarea id="sx-mensaje" name="mensaje" rows="5" required></textarea></div>
+          <button class="sx-btn" type="submit">Send</button>
+          <p class="sx-form-msg" role="status" aria-live="polite"></p>
+          <p class="sx-form-note">Clicking &ldquo;Send&rdquo; opens your email app with the message ready to send.</p>
+        </form>
+      </article>
+      <article class="sx-ct-card">
+        <p class="sx-ct-ico" aria-hidden="true">Chat</p>
+        <h3>Chat</h3>
+        <p>Message us on WhatsApp or Messenger for a quick reply.</p>
+        <div class="sx-ct-chatbtns">
+          <a class="sx-btn sx-outline" href="#" target="_blank" rel="noopener noreferrer" data-sx-link="WHATSAPP_URL">WhatsApp</a>
+          <a class="sx-btn sx-outline" href="#" target="_blank" rel="noopener noreferrer" data-sx-link="MESSENGER_URL">Messenger</a>
+        </div>
+      </article>
     </div>
-    <form class="sx-form" id="sx-contact-form" novalidate>
-      <div class="sx-field"><label for="sx-nombre">Nombre</label><input id="sx-nombre" name="nombre" type="text" autocomplete="name" required></div>
-      <div class="sx-field"><label for="sx-email">Email</label><input id="sx-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
-      <div class="sx-field"><label for="sx-mensaje">Mensaje</label><textarea id="sx-mensaje" name="mensaje" rows="5" required></textarea></div>
-      <button class="sx-btn" type="submit">Enviar</button>
-      <p class="sx-form-msg" role="status" aria-live="polite"></p>
-      <p class="sx-form-note">Al hacer clic en &laquo;Enviar&raquo; se abre tu app de correo con el mensaje listo para enviar.</p>
-    </form>
   </div>
 </section>
 <footer class="sx-foot"><div class="sx-wrap"><p>&copy; 2026 Spanish Xperts</p></div></footer>
@@ -632,7 +674,8 @@ function hh(){document.documentElement.style.setProperty("--sxh-h",h.offsetHeigh
 (function(){var C=window.SX_CONFIG||{};
 function ok(k){var v=C[k];return typeof v==="string"&&v!==k&&/^(https?:\/\/|mailto:)/i.test(v.trim())?v.trim():null}
 [].forEach.call(document.querySelectorAll("[data-sx-link]"),function(a){var k=a.getAttribute("data-sx-link"),v=ok(k);
- if(v){a.href=v;a.target="_top";}else{a.setAttribute("data-sx-missing",k);a.addEventListener("click",function(e){e.preventDefault();if(window.console)console.warn("Spanish Xperts embed: falta configurar "+k)});}});
+ if(v){a.href=v;if(!a.getAttribute("target"))a.target="_top";a.removeAttribute("aria-disabled");a.removeAttribute("data-ph");var wrap=a.closest(".sx-phwrap");if(wrap){var ph=wrap.querySelector("[data-placeholder]");if(ph)ph.hidden=true;}}else{a.setAttribute("data-sx-missing",k);a.addEventListener("click",function(e){e.preventDefault();if(window.console)console.warn("Spanish Xperts embed: falta configurar "+k)});}});
+[].forEach.call(document.querySelectorAll("a[data-ph]"),function(a){a.addEventListener("click",function(e){e.preventDefault();if(window.console)console.info("SpanishXperts: placeholder link not set yet: "+a.getAttribute("data-ph"))});});
 [].forEach.call(document.querySelectorAll("video[data-sx-video]"),function(el){var k=el.getAttribute("data-sx-video"),v=ok(k);if(v){el.src=v;}else{el.setAttribute("data-sx-missing",k);}});
 [].forEach.call(document.querySelectorAll("a[data-sx-scroll]"),function(a){a.addEventListener("click",function(e){var t=document.getElementById(a.getAttribute("href").slice(1));if(t){e.preventDefault();try{t.scrollIntoView({behavior:"smooth",block:"start"})}catch(_){t.scrollIntoView()}}})});
 /* pause other videos when one plays */
@@ -653,11 +696,11 @@ root.addEventListener("keydown",function(e){if(e.key==="ArrowLeft")show(cur-1);i
 (function(){var f=document.getElementById("sx-contact-form");if(!f)return;var TO="adan@spanishxperts.com",msg=f.querySelector(".sx-form-msg");
 f.addEventListener("submit",function(e){e.preventDefault();
  var n=f.nombre.value.trim(),m=f.email.value.trim(),t=f.mensaje.value.trim();
- if(!n||!m||!t){msg.textContent="Por favor completa Nombre, Email y Mensaje.";return}
- if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){msg.textContent="Revisa tu email, parece que no es v\u00e1lido.";return}
- var subject="Pregunta desde la web \u2013 "+n,body="Nombre: "+n+"\nEmail: "+m+"\n\nMensaje:\n"+t+"\n";
+ if(!n||!m||!t){msg.textContent="Please fill in Name, Email, and Message.";return}
+ if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(m)){msg.textContent="Please check your email — it does not look valid.";return}
+ var subject="Question from the website \u2013 "+n,body="Name: "+n+"\nEmail: "+m+"\n\nMessage:\n"+t+"\n";
  var url="mailto:"+TO+"?subject="+encodeURIComponent(subject)+"&body="+encodeURIComponent(body);
- msg.innerHTML="Abriendo tu app de correo\u2026 Si no se abre, escr\u00edbeme a <a href=\"mailto:"+TO+"\" target=\"_top\">"+TO+"</a>.";
+ msg.innerHTML="Opening your email app\u2026 If it does not open, write us at <a href=\"mailto:"+TO+"\" target=\"_top\">"+TO+"</a>.";
  try{window.top.location.href=url}catch(err){try{window.location.href=url}catch(err2){window.open(url,"_blank")}}
 });})();
 </script>
@@ -670,7 +713,7 @@ f.addEventListener("submit",function(e){e.preventDefault();
  if(reduce||!("IntersectionObserver" in W))return; /* everything stays visible */
  function all(s,c){return [].slice.call((c||d).querySelectorAll(s))}
  /* groups: children reveal together with a light stagger when the group enters */
- var groups=[".sx-hero-text",".sx-stats",".sx-books-rail",".sx-comm .sx-wrap",".sx-as-grid",".sx-vrail",".sx-hgrid",".sx-paths",".sx-ct-grid",".sx-lz-card"];
+ var groups=[".sx-hero-text",".sx-stats",".sx-books-rail",".sx-comm .sx-wrap",".sx-as-grid",".sx-vrail",".sx-hgrid",".sx-paths",".sx-ct-widgets",".sx-lz-card"];
  var singles=[".sx-about-title",".sx-about-body > .sx-p",".sx-about-lead",".sx-books-head",".sx-test-head",".sx-reviews",".sx-close .sx-h2",".sx-swipe"];
  var targets=[];
  groups.forEach(function(s){all(s).forEach(function(g){var kids=[].slice.call(g.children).filter(function(k){return k.offsetParent!==null||getComputedStyle(k).display!=="none"});

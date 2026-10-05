@@ -132,22 +132,42 @@
   </div>
 </section>
 </main>
-<section class="sx-sec sx-contact" id="contacto" lang="es">
-  <div class="sx-wrap sx-ct-grid">
-    <div>
-      <p class="sx-kicker">Contacto</p>
-      <h2 class="sx-h2">&iquest;Hablas espa&ntilde;ol y tienes preguntas?</h2>
-      <p class="sx-p">Escr&iacute;beme con este formulario o directamente a:</p>
-      <a class="sx-ct-mail" href="mailto:adan@spanishxperts.com" target="_top">adan@spanishxperts.com</a>
+<section class="sx-sec sx-contact" id="contacto">
+  <div class="sx-wrap">
+    <p class="sx-kicker">Contact</p>
+    <h2 class="sx-h2">Have questions? <span class="sx-red">Contact us.</span></h2>
+    <p class="sx-p sx-ct-lead">Pick the option that works best for you &mdash; video call, email, or chat.</p>
+    <div class="sx-ct-widgets">
+      <article class="sx-ct-card">
+        <p class="sx-ct-ico" aria-hidden="true">Video</p>
+        <h3>Video call</h3>
+        <p>Need an assessment, a trial, or have questions? Schedule a video call with us.</p>
+        <a class="sx-btn" href="https://spanishxperts.as.me" target="_top">Schedule a video call</a>
+      </article>
+      <article class="sx-ct-card sx-ct-card-email">
+        <p class="sx-ct-ico" aria-hidden="true">Email</p>
+        <h3>Email</h3>
+        <p>Fill this form or email us your questions &mdash; we can reply by email.</p>
+        <a class="sx-ct-mail" href="mailto:adan@spanishxperts.com" target="_top">adan@spanishxperts.com</a>
+        <form class="sx-form" id="sx-contact-form" novalidate>
+          <div class="sx-field"><label for="sx-nombre">Name</label><input id="sx-nombre" name="nombre" type="text" autocomplete="name" required></div>
+          <div class="sx-field"><label for="sx-email">Email</label><input id="sx-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
+          <div class="sx-field"><label for="sx-mensaje">Message</label><textarea id="sx-mensaje" name="mensaje" rows="5" required></textarea></div>
+          <button class="sx-btn" type="submit">Send</button>
+          <p class="sx-form-msg" role="status" aria-live="polite"></p>
+          <p class="sx-form-note">Clicking &ldquo;Send&rdquo; opens your email app with the message ready to send.</p>
+        </form>
+      </article>
+      <article class="sx-ct-card">
+        <p class="sx-ct-ico" aria-hidden="true">Chat</p>
+        <h3>Chat</h3>
+        <p>Message us on WhatsApp or Messenger for a quick reply.</p>
+        <div class="sx-ct-chatbtns">
+          <a class="sx-btn sx-outline" href="https://wa.me/19569701615" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+          <a class="sx-btn sx-outline" href="https://m.me/spanishxperts" target="_blank" rel="noopener noreferrer">Messenger</a>
+        </div>
+      </article>
     </div>
-    <form class="sx-form" id="sx-contact-form" novalidate>
-      <div class="sx-field"><label for="sx-nombre">Nombre</label><input id="sx-nombre" name="nombre" type="text" autocomplete="name" required></div>
-      <div class="sx-field"><label for="sx-email">Email</label><input id="sx-email" name="email" type="email" autocomplete="email" inputmode="email" required></div>
-      <div class="sx-field"><label for="sx-mensaje">Mensaje</label><textarea id="sx-mensaje" name="mensaje" rows="5" required></textarea></div>
-      <button class="sx-btn" type="submit">Enviar</button>
-      <p class="sx-form-msg" role="status" aria-live="polite"></p>
-      <p class="sx-form-note">Al hacer clic en &laquo;Enviar&raquo; se abre tu app de correo con el mensaje listo para enviar.</p>
-    </form>
   </div>
 </section>
 <footer class="sx-foot"><div class="sx-wrap"><p>&copy; 2026 Spanish Xperts</p></div></footer>
